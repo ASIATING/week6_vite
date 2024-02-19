@@ -54,7 +54,7 @@
 <script>
 import axios from 'axios'
 import UserProductModal from '@/components/UserProductModal.vue'
-import paginationArea from '@/components/paginationArea.vue'
+import paginationArea from '@/components/PaginationArea.vue'
 export default {
   components: {
     UserProductModal,
@@ -71,16 +71,6 @@ export default {
       productModal: null,
       loadingItem: '',
       pagination: {}
-      // form: {
-      //   user: {
-      //     name: '',
-      //     email: '',
-      //     tel: '',
-      //     address: ''
-      //   },
-      //   message: ''
-
-      // }
     }
   },
   mounted () {
@@ -89,7 +79,6 @@ export default {
   methods: {
     getProducts (page) {
       this.isLoading = true
-      console.log(page)
       const url = `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}/products?page=${page || 1}`
       axios.get(url)
         .then(res => {
@@ -119,12 +108,10 @@ export default {
     },
     addToCart (id, qty = 1) {
       this.loadingItem = id
-      console.log(id)
       const url = `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}/cart`
       axios.post(url, { data: { product_id: id, qty } })
         .then(res => {
           this.loadingItem = ''
-          alert(res.data.message)
           this.$refs.userProductModal.hideModal()
           this.getCart()
         })

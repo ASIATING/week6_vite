@@ -14,8 +14,6 @@
           </li>
         </ul>
       </nav>
-      {{pagination.current_page}}
-      {{pagination.total_pages+"test"}}
 </template>
 
 <script>
@@ -23,7 +21,6 @@ export default {
   props: ['pagination'],
   methods: {
     updatePage (page) {
-      console.log('props', page)
       this.$emit('emitPages', page)
     }
   }
