@@ -45,17 +45,13 @@ export default {
   methods: {
     login () {
       const api = `${import.meta.env.VITE_API}admin/signin`
-      console.log(this.user)
       axios.post(api, this.user)
         .then(res => {
-          console.log(res.data)
           const { token, expired } = res.data
           document.cookie = `hexToken=${token};expires=${new Date(expired)};`
-          alert(res)
           this.$router.push('/admin/products')
         })
         .catch(err => {
-          console.dir(err)
           alert(err)
         })
     }
