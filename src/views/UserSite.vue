@@ -7,7 +7,6 @@
     <RouterLink to="/product" active-class="active">產品詳細頁面</RouterLink> |
     <RouterLink to="/cart" active-class="active">購物車頁面</RouterLink> |
     <RouterLink to="/admin/products" active-class="active">後台商品列表</RouterLink>
-    123
 
   </div>
   <RouterView />

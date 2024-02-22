@@ -5,8 +5,7 @@
     <RouterLink to="/">回到前台</RouterLink> |
     <RouterLink to="/admin/products">後台產品列表</RouterLink> |
     <RouterLink to="/admin/orders">後台訂單</RouterLink> |
-    <a href="#">登出</a>
-    123
+    <a href="#" @click="logout">登出</a>
 
   </div>
   <RouterView />
@@ -18,7 +17,6 @@ import axios from 'axios'
 export default {
   mounted () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-    alert(token)
     axios.defaults.headers.common.Authorization = token
     this.checkLogin()
   },
@@ -32,12 +30,21 @@ export default {
     checkLogin () {
       axios.post(`${this.apiUrl}/api/user/check`)
         .then(res => {
-          alert(res)
+          console.log(res)
         })
         .catch(err => {
-          console.dir(err)
-          alert(err)
+          alert(err.response.data.message)
           this.$router.push('/login')
+        })
+    },
+    logout () {
+      axios.post(`${this.apiUrl}/logout`)
+        .then(res => {
+          console.log(res)
+          this.$router.push('/')
+        })
+        .catch(err => {
+          alert(err)
         })
     }
   }
