@@ -260,7 +260,7 @@ export default {
   color: white;
 }
 .pageColor{
-  /* min-height: 85vh; */
+  min-height: 85vh;
   background-color: #fff3e0;
 }
 </style>
