@@ -22,7 +22,7 @@ const routes = [
         component: () => import('../views/UserProducts.vue')
       },
       {
-        path: 'product',
+        path: 'product/:id',
         name: 'UserPoduct',
         component: () => import('../views/UserProduct.vue')
       },
@@ -30,6 +30,16 @@ const routes = [
         path: 'cart',
         name: 'UserCart',
         component: () => import('../views/UserCart.vue')
+      },
+      {
+        path: 'order',
+        name: 'UserOrder',
+        component: () => import('../views/UserOrder.vue')
+      },
+      {
+        path: 'orderPay/:id',
+        name: 'UserOrderPay',
+        component: () => import('../views/UserOrderPay.vue')
       }
     ]
 
@@ -52,16 +62,7 @@ const routes = [
     ]
 
   },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/AboutView.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/AboutView.vue')
-  },
+
   {
     path: '/login',
     component: () => import('@/views/UserLogin.vue')

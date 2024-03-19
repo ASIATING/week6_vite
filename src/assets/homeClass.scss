@@ -1,0 +1,146 @@
+.index-hero{
+    background-color: rgba(0, 0, 0, .5);
+    .index-hero-img{
+
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+        opacity: 0.6;
+       
+    }
+
+      
+    .index-hero-txt{
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        padding: 20px;
+        background-color:  rgb(255, 255, 255, 0.9);
+        opacity: 0.9;
+        display: inline-block;
+    }
+    a{
+        text-decoration: none;
+    }
+
+
+    @media screen and (max-width: 768px) {
+        .container{
+            text-align: center;
+            left: initial;
+        }
+        .index-hero-txt{
+            width: 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px; /* 調整 padding */
+            background-color: rgba(255, 255, 255, 0.9); /* 調整背景顏色和透明度 */
+            opacity: 0.9; /* 調整透明度 */
+        }
+    }
+}
+.aboutArea{
+    .aboutImg{
+        width: 100%; 
+        height: 330px;
+        object-fit: cover;
+    }
+    .aboutTxt{
+        align-items: center;
+        text-align: center;
+    }
+}
+.infoArea{
+    .card-text{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3; /* 设置最多显示的行数 */
+    }
+    .card-hotProduct{
+        box-sizing: border-box;
+        padding: 1rem;
+        position: relative;
+        min-height: 200px;
+        width: 100%;
+        border-radius: 0.5rem;
+        transition: all .3s;
+        background-color: rgba(0, 0, 0, .3);
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        z-index: 1;
+        text-decoration: none;
+            color: #fff;
+        cursor: pointer;
+        &:hover{
+            background-color: rgba(0, 0, 0, .5);
+            transform: scale(1.02);
+        }
+
+    }
+    .card-lg{
+        height: 100%;
+    }
+}
+.customerFeedback{
+    .personInfo{
+        align-items: center;
+        // padding: 10px;
+        border-bottom: 1px solid #dee2e6;
+   
+    .personImg{
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-color: red;
+        text-align: center;
+        overflow: hidden; /* 隱藏 DIV 元素內容超出邊界的部分 */
+        img{
+            width: 100%;
+            height: 100%; /* 讓圖片高度擴展至 DIV 元素的高度 */
+            object-fit: cover; /* 讓圖片在保持比例的情況下填滿整個 DIV 元素 */
+
+        }
+    }
+}
+}
+.carousel-control-next {
+  right: -50px; /* 调整右侧偏移量 */
+  /* 其他样式 */
+}
+.carousel-control-prev {
+    left: -50px; /* 调整右侧偏移量 */
+}
+.card-hotProduct{
+    box-sizing: border-box;
+    padding: 1rem;
+    position: relative;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 0.5rem;
+    transition: all .3s;
+    background-color: rgba(0, 0, 0, .3);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+    text-decoration: none;
+        color: #fff;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(0, 0, 0, .5);
+        transform: scale(1.02);
+    }
+
+}

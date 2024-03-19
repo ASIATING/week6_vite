@@ -59,6 +59,7 @@ export default {
 
   methods: {
     openModal () {
+      console.log(this.productModal)
       this.productModal.show()
     },
     hideModal () {

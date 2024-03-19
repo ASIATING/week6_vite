@@ -1,0 +1,35 @@
+.outer{
+    background-image: url('https://cdn.discordapp.com/attachments/836255942999146530/1215520628048928798/photo-1450778869180-41d0601e046e.png?ex=65fd0ccd&is=65ea97cd&hm=059589acd2118e791f3edc2cb3f172a799e6e3c3acd1a7a28036fdfcb061846b&');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    height: 30vh; /* 设置高度为网页高度的20% */
+    width: 100%; /* 设置宽度为100% */
+   
+
+}
+.productProfile{
+       
+    h1{
+        border-bottom: 5px solid #ffb300;
+    }
+    h5{
+        font-weight: 600;
+    }
+    .btn{
+        font-weight: bold;
+        &:hover{
+            color: #fff;
+        }
+    }
+    .btn-primary{
+        color: #fff;
+    }
+}
+.rules-list{
+    li{
+        list-style: none;
+        margin-bottom: 5px;
+    }
+}

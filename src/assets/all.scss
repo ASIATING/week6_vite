@@ -1,5 +1,12 @@
 @import "bootstrap/scss/functions";
 @import "variables";
 @import "bootstrap/scss/bootstrap";
+@import "navClass";
+@import "homeClass";
+@import "userProducts";
+@import "userProduct";
 
 @import "bootstrap-icons/font/bootstrap-icons.css";
+body {
+    font-family: "微軟正黑體"; /* 預設字型 */
+}

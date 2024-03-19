@@ -1,9 +1,8 @@
 <template>
   <div>
-    使用者登入頁面
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-          <h1 class="h3 mb-3 font-weight-normal">
+          <h1 class="h3 mb-3 font-weight-normal text-center">
             請先登入
           </h1>
           <div class="col-8">
@@ -25,7 +24,7 @@
           </div>
         </div>
         <p class="mt-5 mb-3 text-muted">
-          &copy; 2021~∞ - 六角學院
+          &copy; 2024~∞ - 貓狗後台
         </p>
       </div>
   </div>
@@ -44,7 +43,7 @@ export default {
   },
   methods: {
     login () {
-      const api = `${import.meta.env.VITE_API}admin/signin`
+      const api = `${import.meta.env.VITE_API}/admin/signin`
       axios.post(api, this.user)
         .then(res => {
           const { token, expired } = res.data
