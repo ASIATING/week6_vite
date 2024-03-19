@@ -92,6 +92,7 @@
 </div>
 </div>
   </div>
+  <div>.</div>
 </div>
 </template>
 
@@ -259,7 +260,7 @@ export default {
   color: white;
 }
 .pageColor{
-  height: 90vh;
+  /* min-height: 85vh; */
   background-color: #fff3e0;
 }
 </style>
