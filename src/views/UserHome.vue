@@ -32,7 +32,7 @@
       </div>
       <div class="row align-items-center flex-row-reverse" data-aos="fade-left">
         <div class="col-md-6 p-3">
-          <img src="https://cdn.discordapp.com/attachments/836255942999146530/1214411809411432448/photo-1548595152-f556f2d0fde5.png?ex=65f90422&is=65e68f22&hm=9296f5216ccccdec06f91b442673656f11f15abc8c0c81b58a2c52da736367ca&" class="aboutImg" alt="...">
+          <img src="https://cdn.discordapp.com/attachments/1216979871138320384/1216979935965478982/cat-drinking-from-bowl_23-2149078311.png?ex=66025be3&is=65efe6e3&hm=8d9c47436c12dcde0603aef67b03c5ccc1064e1feca06075ad6bc00b8b7fdc51&" class="aboutImg" alt="...">
         </div>
         <div class="col-md-6 p-3">
           <h1 class="fw-bold">購買寵物週邊&捐贈飼料</h1>

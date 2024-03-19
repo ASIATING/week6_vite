@@ -119,9 +119,9 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import paginationArea from '@/components/PaginationArea.vue'
-import cartStore from '@/stores/cartStore'
-import productStore from '@/stores/productStore'
-import { mapState, mapActions } from 'pinia'
+// import cartStore from '@/stores/cartStore'
+// import productStore from '@/stores/productStore'
+// import { mapState, mapActions } from 'pinia'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Pagination } from 'swiper'
@@ -154,8 +154,8 @@ export default {
     this.getProducts()
   },
   methods: {
-    ...mapActions(productStore, ['getProducts', 'serchBtn']),
-    ...mapActions(cartStore, ['addToCart']),
+    // ...mapActions(productStore, ['getProducts', 'serchBtn']),
+    // ...mapActions(cartStore, ['addToCart']),
     getProducts (page) {
       this.isLoading = true
       let url = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}`
@@ -205,11 +205,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(productStore, [
-      'products',
-      'pagination',
-      'isLoading'
-    ])
+    // ...mapState(productStore, [
+    //   'products',
+    //   'pagination',
+    //   'isLoading'
+    // ])
   }
 }
 </script>
