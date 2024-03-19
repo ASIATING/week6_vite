@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
-    <v-stepper-header model-value="3">
+  <div class="container vh-100" >
+    <v-stepper class="stepper-transparent" model-value="3">
+    <v-stepper-header>
       <v-stepper-item title="購物車確認" value="1"></v-stepper-item>
       <v-divider></v-divider>
       <v-stepper-item title="填寫訂購資料" value="2"></v-stepper-item>
       <v-divider></v-divider>
       <v-stepper-item title="確認付款" value="3"></v-stepper-item>
     </v-stepper-header>
+  </v-stepper>
     <table class="table table-bordered table-hover align-middle">
           <tbody>
             <tr>
