@@ -100,7 +100,6 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/admin/orders?page=${page}`
       axios.get(url)
         .then((res) => {
-          console.log(777)
           console.log(res.data)
           const { orders, pagination } = res.data
           this.ordersData = orders

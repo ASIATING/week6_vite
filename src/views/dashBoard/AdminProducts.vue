@@ -82,7 +82,7 @@
     </div>
     <!-- Modal -->
     <edit-product-modal ref="editProductModal" :product="tempProduct" :is-new="isNew" @update="getData"></edit-product-modal>
-    <del-product-modal ref="delProductModal" :item="tempProduct" @update="getData"></del-product-modal>
+    <del-product-modal ref="delProductModal" :item="tempProduct" :apiMethod="'product'" @update="getData" ></del-product-modal>
     <!-- Modal -->
   </div>
 
@@ -157,14 +157,10 @@ export default {
           imagesUrl: []
         }
         this.isNew = true
-        console.log(111)
-        console.log('777', this.$refs.editProductModal)
         this.$refs.editProductModal.openModal(isNew, item)
       } else if (isNew === 'edit') {
         this.tempProduct = { ...item }
         this.isNew = false
-        console.log(222)
-        console.log(this.$refs.editProductModal.openModal)
         this.$refs.editProductModal.openModal(isNew, item)
       } else if (isNew === 'delete') {
         this.tempProduct = { ...item }

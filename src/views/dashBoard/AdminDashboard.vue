@@ -21,6 +21,9 @@
               <RouterLink to="/admin/orders" class="nav-link">後台訂單</RouterLink>
             </li>
             <li class="nav-item">
+              <RouterLink to="/admin/coupons" class="nav-link">優惠卷管理</RouterLink>
+            </li>
+            <li class="nav-item">
               <a href="#" class="nav-link" @click="logout">登出</a>
             </li>
           </ul>

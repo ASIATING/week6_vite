@@ -18,7 +18,7 @@
         <RouterLink to="/cart" class="nav-link">購物車頁面</RouterLink>
       </li>
       <li class="nav-item">
-        <RouterLink to="/login" class="nav-link">後台商品列表</RouterLink>
+        <RouterLink to="/admin/products" class="nav-link">後台商品列表</RouterLink>
       </li>
     </ul>
     </div>

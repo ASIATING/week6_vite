@@ -54,7 +54,6 @@ export default {
       })
     },
     openModal () {
-      console.log(777777)
       console.log(this.item)
       this.delOrderModal.show()
     },

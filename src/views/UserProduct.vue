@@ -66,7 +66,6 @@
     }"
     :loop="true"
     :loopedSlides="products.length"
-    slidesPerView="1"
     :centeredSlides="true"
     :autoplay="{
       delay: 2500,

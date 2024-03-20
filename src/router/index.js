@@ -58,6 +58,11 @@ const routes = [
         path: 'orders',
         name: 'adminOrder',
         component: () => import('../views/dashBoard/AdminOrders.vue')
+      },
+      {
+        path: 'coupons',
+        name: 'adminCoupons',
+        component: () => import('../views/dashBoard/AdminCoupons.vue')
       }
     ]
 

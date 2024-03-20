@@ -36,7 +36,7 @@
                 </div>
                 <div v-else>
                   <button class="btn btn-outline-primary btn-sm d-block w-100" @click="addImage()">
-                    新增圖片132
+                    新增圖片
                   </button>
                 </div>
                 </div>
@@ -120,8 +120,6 @@ export default {
     return {
       isLoding: true,
       productModal: null,
-      apiUrl: 'https://vue3-course-api.hexschool.io/v2',
-      apiPath: 'ting-hexschool',
       products: [],
       isNew: true,
       tempProduct: {

@@ -5,8 +5,8 @@
         <div class="col-md-4">
           <!-- <h3 class="fw-bold">我是使用者</h3> -->
           <div class="sideBar">
-            <!-- <h3 class="fw-bold">搜尋您要的商品</h3>
-            <input type="text" class="form-control mb-3" placeholder="搜尋關鍵字"> -->
+            <h3 class="fw-bold">搜尋您要的商品</h3>
+            <input type="text" class="form-control mb-3" placeholder="搜尋關鍵字" v-model="serchKeyword">
             <h3 class="fw-bold">商品分類</h3>
             <ul class="list-group">
               <li class="list-group-item" @click="serchBtn('')">
@@ -74,41 +74,41 @@
           </div>
         </div>
         <div class="col-md-8">
-            <h3 class="fw-bold">全部商品</h3>
+            <h3 class="fw-bold">{{selectedOption?selectedOption:'全部商品'}}</h3>
             <div  v-if="isLoading" class="loading-container vh-100">
          <vue-loading :active="isLoading"></vue-loading>
       </div>
-            <div v-else v-for="product in products" :key="product.id" class="card productCard mb-3">
-              <div class="row g-0">
-                <div class="col-4">
-                  <img :src="product.imageUrl" class="img-fluid rounded-start" alt="商品照片">
-                </div>
-                <div class="col-8">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                    <p class="card-text d-none d-md-block">{{ product.description }}</p>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <div>
-                        <div><del>建議售價:{{ product.origin_price }}</del></div>
-                        <div class="fw-bold text-danger fz-3">優惠價格:{{ product.price }}</div>
-                      </div>
-                      <div class="d-flex flex-column flex-md-row align-items-md-center mt-md-0 mt-3">
-                          <router-link :to="`/product/${product.id}`">
-                            <div class="btn btn-primary cardBtn moreBtn mb-2 mb-md-0 mr-md-3">查看更多</div>
-                          </router-link>
-                          <div class="btn btn-outline-primary cardBtn addToCartBtn ms-md-3" @click="addToCart(product.id)">加入購物車</div>
-                      </div>
-                    </div>
-                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      <div v-else v-for="product in filteredProducts" :key="product.id" class="card productCard mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <div class="d-flex justify-content-center justify-content-md-start align-items-center h-100">
+                <img :src="product.imageUrl" class="img-fluid rounded-start" alt="商品照片">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                <p class="card-text d-none d-md-block">{{ product.description }}</p>
+                <div class="d-flex justify-content-between align-items-end">
+                  <div>
+                    <div><del>建議售價:{{ product.origin_price }}</del></div>
+                    <div class="fw-bold text-danger fz-3">優惠價格:{{ product.price }}</div>
+                  </div>
+                  <div class="d-flex flex-column flex-md-row align-items-md-center mt-md-0 mt-3">
+                    <router-link :to="`/product/${product.id}`">
+                      <div class="btn btn-primary cardBtn moreBtn mb-2 mb-md-0 mr-md-3">看商品詳情</div>
+                    </router-link>
+                    <div class="btn btn-outline-primary cardBtn addToCartBtn ms-md-3" @click="addToCart(product.id)">加入購物車</div>
                   </div>
                 </div>
               </div>
-
-          </div>
-          <div class="d-flex justify-content-end">
-            <paginationArea :pagination="pagination" @emit-pages="getProducts"></paginationArea>
+            </div>
           </div>
         </div>
+        <div v-if="!serchKeyword" class="d-flex justify-content-end">
+          <paginationArea :pagination="pagination" @emit-pages="getProducts"></paginationArea>
+        </div>
+      </div>
     </div>
 
     </div>
@@ -139,6 +139,7 @@ export default {
   },
   data () {
     return {
+      serchKeyword: '',
       products: [],
       cart: {
       },
@@ -158,6 +159,7 @@ export default {
     // ...mapActions(cartStore, ['addToCart']),
     getProducts (page) {
       this.isLoading = true
+      this.serchKeyword = ''
       let url = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}`
       if (this.selectedOption !== '') {
         url = `${VITE_API}/api/${VITE_PATH}/products?category=${this.selectedOption}&page=${page || 1}`
@@ -204,12 +206,20 @@ export default {
         })
     }
   },
-  computed: {
+  watch: {
     // ...mapState(productStore, [
     //   'products',
     //   'pagination',
     //   'isLoading'
     // ])
+  },
+  computed: {
+    filteredProducts () {
+      return this.products.filter(product => {
+      // 使用 includes 方法检查产品标题是否包含搜索关键字
+        return product.title.toLowerCase().includes(this.serchKeyword.toLowerCase())
+      })
+    }
   }
 }
 </script>
@@ -222,6 +232,7 @@ export default {
   height: 100vh; /* 調整高度以填滿整個視窗 */
 }
 .productsContainer{
+  min-height: 90vh;
   background-color: #fff3e0;
 }
 </style>
