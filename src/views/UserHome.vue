@@ -126,7 +126,7 @@
           <div class="col-md-3 col-12">
             <div class=" d-flex justify-content-center">
                 <div class="personImg">
-                <img src="https://cdn.discordapp.com/attachments/836255942999146530/1214795867194789898/240_F_289993382_QJID0KDhWhwp8JX3llcoD8V9jDKAZnpq.png?ex=65fa69d0&is=65e7f4d0&hm=19bf926cbe891769e841319e047b46549669ba576dde5f73761fec048f9faa98&" alt="">
+                <img src="https://cdn.discordapp.com/attachments/1216979871138320384/1219955453866414100/240_F_289993382_QJID0KDhWhwp8JX3llcoD8V9jDKAZnpq.png?ex=660d2f0d&is=65faba0d&hm=333bf322e8da082935d8ffa04ebe149d29d99f270dc6443c093f8068840080ef&" alt="">
               </div>
               </div>
               </div>

@@ -116,12 +116,12 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Swal from 'sweetalert2'
+// import axios from 'axios'
+// import Swal from 'sweetalert2'
 import paginationArea from '@/components/PaginationArea.vue'
-// import cartStore from '@/stores/cartStore'
-// import productStore from '@/stores/productStore'
-// import { mapState, mapActions } from 'pinia'
+import cartStore from '@/stores/cartStore'
+import productStore from '@/stores/productStore'
+import { mapState, mapActions } from 'pinia'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Pagination } from 'swiper'
@@ -130,7 +130,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const { VITE_API, VITE_PATH } = import.meta.env
+// const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   components: {
     paginationArea,
@@ -140,13 +140,13 @@ export default {
   data () {
     return {
       serchKeyword: '',
-      products: [],
+      // products: [],
       cart: {
       },
       qty: 1,
       productModal: null,
       loadingItem: '',
-      pagination: {},
+      // pagination: {},
       selectedOption: '',
       modules: [Autoplay, Navigation, Pagination]
     }
@@ -155,65 +155,63 @@ export default {
     this.getProducts()
   },
   methods: {
-    // ...mapActions(productStore, ['getProducts', 'serchBtn']),
-    // ...mapActions(cartStore, ['addToCart']),
-    getProducts (page) {
-      this.isLoading = true
-      this.serchKeyword = ''
-      let url = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}`
-      if (this.selectedOption !== '') {
-        url = `${VITE_API}/api/${VITE_PATH}/products?category=${this.selectedOption}&page=${page || 1}`
-      }
-      axios.get(url)
-        .then(res => {
-          this.isLoading = false
-          this.pagination = res.data.pagination
-          console.log(this.pagination)
-          this.products = res.data.products
-        })
-        .catch(err => {
-          this.isLoading = false
-          alert(err.response.data.message)
-        })
-    },
-    serchBtn (tempCategory) {
-      this.selectedOption = tempCategory
-      this.getProducts()
-    },
-    addToCart (id, qty = 1) {
-      const url = `${VITE_API}/api/${VITE_PATH}/cart`
-      axios.post(url, { data: { product_id: id, qty } })
-        .then(res => {
-          console.log(res)
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `${res.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-        })
-        .catch(err => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: `${err.response.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-        })
-    }
-  },
-  watch: {
-    // ...mapState(productStore, [
-    //   'products',
-    //   'pagination',
-    //   'isLoading'
-    // ])
+    ...mapActions(productStore, ['getProducts', 'serchBtn']),
+    ...mapActions(cartStore, ['addToCart'])
+    // getProducts (page) {
+    //   this.isLoading = true
+    //   this.serchKeyword = ''
+    //   let url = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}`
+    //   if (this.selectedOption !== '') {
+    //     url = `${VITE_API}/api/${VITE_PATH}/products?category=${this.selectedOption}&page=${page || 1}`
+    //   }
+    //   axios.get(url)
+    //     .then(res => {
+    //       this.isLoading = false
+    //       this.pagination = res.data.pagination
+    //       console.log(this.pagination)
+    //       this.products = res.data.products
+    //     })
+    //     .catch(err => {
+    //       this.isLoading = false
+    //       alert(err.response.data.message)
+    //     })
+    // },
+    // serchBtn (tempCategory) {
+    //   this.selectedOption = tempCategory
+    //   this.getProducts()
+    // }
+    // addToCart (id, qty = 1) {
+    //   const url = `${VITE_API}/api/${VITE_PATH}/cart`
+    //   axios.post(url, { data: { product_id: id, qty } })
+    //     .then(res => {
+    //       console.log(res)
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'success',
+    //         title: `${res.data.message}`,
+    //         showConfirmButton: false,
+    //         toast: true,
+    //         timer: 1500
+    //       })
+    //     })
+    //     .catch(err => {
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'error',
+    //         title: `${err.response.data.message}`,
+    //         showConfirmButton: false,
+    //         toast: true,
+    //         timer: 1500
+    //       })
+    //     })
+    // }
   },
   computed: {
+    ...mapState(productStore, [
+      'products',
+      'pagination',
+      'isLoading'
+    ]),
     filteredProducts () {
       return this.products.filter(product => {
       // 使用 includes 方法检查产品标题是否包含搜索关键字

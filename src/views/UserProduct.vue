@@ -96,8 +96,8 @@
 
 </template>
 <script>
-import axios from 'axios'
-import Swal from 'sweetalert2'
+// import axios from 'axios'
+// import Swal from 'sweetalert2'
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -108,7 +108,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import productStore from '../stores/productStore'
-const { VITE_API, VITE_PATH } = import.meta.env
+// const { VITE_API, VITE_PATH } = import.meta.env
 
 export default {
   components: {
@@ -118,11 +118,11 @@ export default {
   data () {
     return {
       modules: [Autoplay, Navigation, Pagination],
-      selectedNum: '',
-      productInfo: {
-        imagesUrl: [],
-        content: ''
-      }
+      selectedNum: ''
+      // productInfo: {
+      //   imagesUrl: [],
+      //   content: ''
+      // }
     }
   },
   mounted () {
@@ -132,45 +132,44 @@ export default {
     console.log(this.$route.params.id) // this.$route.params.id
   },
   methods: {
-    ...mapActions(productStore, ['getProducts']),
-    ...mapActions(cartStore, ['addToCart']),
-    getProductInfo (id) {
-      const url = `${VITE_API}/api/${VITE_PATH}/product/${id}`
-      axios.get(url)
-        .then(res => {
-          this.productInfo = res.data.product
-          console.log(this.productInfo)
-          console.log(777)
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-        })
-    },
-    addToCart (id, qty = 1) {
-      const url = `${VITE_API}/api/${VITE_PATH}/cart`
-      axios.post(url, { data: { product_id: id, qty } })
-        .then(res => {
-          console.log(res)
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `${res.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-        })
-        .catch(err => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: `${err.response.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-        })
-    }
+    ...mapActions(productStore, ['getProducts', 'getProductInfo']),
+    ...mapActions(cartStore, ['addToCart'])
+    // getProductInfo (id) {
+    //   const url = `${VITE_API}/api/${VITE_PATH}/product/${id}`
+    //   axios.get(url)
+    //     .then(res => {
+    //       this.productInfo = res.data.product
+    //       console.log(this.productInfo)
+    //     })
+    //     .catch(err => {
+    //       alert(err.response.data.message)
+    //     })
+    // }
+    // addToCart (id, qty = 1) {
+    //   const url = `${VITE_API}/api/${VITE_PATH}/cart`
+    //   axios.post(url, { data: { product_id: id, qty } })
+    //     .then(res => {
+    //       console.log(res)
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'success',
+    //         title: `${res.data.message}`,
+    //         showConfirmButton: false,
+    //         toast: true,
+    //         timer: 1500
+    //       })
+    //     })
+    //     .catch(err => {
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'error',
+    //         title: `${err.response.data.message}`,
+    //         showConfirmButton: false,
+    //         toast: true,
+    //         timer: 1500
+    //       })
+    //     })
+    // }
   },
   watch: {
     $route: {
@@ -185,7 +184,8 @@ export default {
     ...mapState(productStore, [
       'products',
       'pagination',
-      'isLoading'
+      'isLoading',
+      'productInfo'
     ])
   }
 }

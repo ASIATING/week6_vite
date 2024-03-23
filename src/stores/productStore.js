@@ -2,12 +2,16 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 // import Swal from 'sweetalert2'
 const { VITE_API, VITE_PATH } = import.meta.env
-export default defineStore('counter', {
+export default defineStore('productStore', {
   state: () => ({
     count: 0,
     isLoading: true,
     products: [],
     cart: {
+    },
+    productInfo: {
+      imagesUrl: [],
+      content: ''
     },
     qty: 1,
     loadingItem: '',
@@ -42,6 +46,17 @@ export default defineStore('counter', {
       console.log('serchBtn')
       this.selectedOption = tempCategory
       this.getProducts()
+    },
+    getProductInfo (id) {
+      const url = `${VITE_API}/api/${VITE_PATH}/product/${id}`
+      axios.get(url)
+        .then(res => {
+          this.productInfo = res.data.product
+          console.log(this.productInfo)
+        })
+        .catch(err => {
+          alert(err.response.data.message)
+        })
     }
 
   }

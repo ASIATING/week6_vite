@@ -74,11 +74,24 @@
       </tr>
     </tfoot>
   </table>
+  <div class="input-group couponInput mb-3 ml-auto">
+  <input type="text" class="form-control" placeholder="輸入優惠碼" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="coupon">
+  <div class="input-group-append">
+    <button type="button" class="btn btn-primary" @click="sendCoupon(coupon)">
+            送出優惠券
+          </button>
+  </div>
+</div>
+<!-- <form class="text-md-start text-center">
+          <input type="text" class="teat-start p-2 w-50" placeholder="請輸入優惠代碼" v-model="coupon" />
+          <button type="button" class="btn btn-primary p-3" @click="sendCoupon(coupon)">
+            送出優惠券
+          </button>
+        </form> -->
 <div class="text-end">
-  <RouterLink to="/order" class="nav-link">
-    <button class="btn btn-primary">結帳去</button>
+  <RouterLink to="/order" class="nav-link d-inline-block">
+    <button class="btn btn-primary"  @click="sendCoupon(coupon)">結帳去</button>
   </RouterLink>
-
 </div>
 <div class="">
     <h3>購物車消費注意事項</h3>
@@ -99,159 +112,66 @@
 <script>
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { mapState, mapActions } from 'pinia'
+import cartStore from '@/stores/cartStore'
+const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
     return {
-      cartEmpty: false,
-      apiUrl: import.meta.env.VITE_API,
-      apiPath: import.meta.env.VITE_PATH,
-      isLoading: true,
-      products: [],
-      cart: {
-      },
-      qty: 1,
-      tempProduct: {},
-      productModal: null,
-      loadingItem: '',
-      form: {
-        user: {
-          name: '',
-          email: '',
-          tel: '',
-          address: ''
-        },
-        message: ''
-      }
+      coupon: ''
     }
   },
   mounted () {
     this.getCart()
   },
   methods: {
-    getCart () {
-      const url = `${this.apiUrl}/api/${this.apiPath}/cart`
-      axios.get(url)
-        .then(res => {
-          console.log(res)
-          this.cart = res.data.data
-          if (this.cart.total === 0) {
-            this.cartEmpty = true
-          } else {
-            this.cartEmpty = false
-          }
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-        })
-    },
-    addToCart (id, qty = 1) {
-      this.loadingItem = id
-      const url = `${this.apiUrl}/api/${this.apiPath}/cart`
-      axios.post(url, { data: { product_id: id, qty } })
-        .then(res => {
-          this.loadingItem = ''
-          alert(res.data.message)
-          this.$refs.userProductModal.hideModal()
-          this.getCart()
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-        })
-    },
-    updateCart (data) {
-      this.loadingItem = data.id
-      const url = `${this.apiUrl}/api/${this.apiPath}/cart/${data.id}`
-      axios.put(url, { data: { product_id: data.product_id, qty: data.qty } })
-        .then(res => {
-          this.loadingItem = ''
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `${res.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-          this.getCart()
-        })
-        .catch(err => {
-          this.loadingItem = ''
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: `${err.response.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-          // alert(err.response.data.message)
-        })
-    },
-    removeCartItem (id) {
-      const url = `${this.apiUrl}/api/${this.apiPath}/cart/${id}`
-      this.loadingItem = id
-      axios.delete(url)
-        .then(res => {
-          this.loadingItem = ''
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `${res.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-          this.getCart()
-        })
-        .catch(err => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: `${err.response.data.message}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 1500
-          })
-        })
-    },
-    clearCart () {
-      Swal.fire({
-        title: '確定要清空購物車嗎?',
-        text: ' 清空後無法復原! ',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '確定，我要清空購物車!',
-        cancelButtonText: '取消'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const url = `${this.apiUrl}/api/${this.apiPath}/carts`
-          axios.delete(url)
-            .then(res => {
-              Swal.fire({
-                title: '刪除成功!',
-                text: res.data.message,
-                icon: 'success'
-              }).then(() => {
-                this.getCart()
-              })
-            })
-            .catch(err => {
-              Swal.fire({
-                title: 'Error!',
-                text: err.response.data.message,
-                icon: 'error'
-              })
-            })
+    ...mapActions(cartStore, ['getCart', 'addToCart', 'updateCart', 'removeCartItem', 'clearCart']),
+    sendCoupon (coupon) {
+      const sendCouponUrl = `${VITE_API}/api/${VITE_PATH}/coupon`
+      const sendData = {
+        data: {
+          code: coupon
         }
-      })
+      }
+      axios
+        .post(sendCouponUrl, sendData)
+        .then((res) => {
+          if (res.data.data.final_total === this.rawTotal) {
+            Swal.fire({
+              title: '優惠券有誤，請重新輸入',
+              confirmButtonColor: '#566B5A',
+              icon: 'warning'
+            })
+          }
+          this.coupon = ''
+          this.getCart()
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: '優惠券有誤，請重新輸入',
+            confirmButtonColor: '#566B5A',
+            icon: 'warning'
+          })
+          console.log(err)
+        })
     }
+  },
+  computed: {
+    ...mapState(cartStore, [
+      'cartEmpty',
+      'cart',
+      'productModal',
+      'loadingItem'
+    ])
   }
 }
 </script>
 
 <style scoped>
+.couponInput{
+  /* width: 150px; */
+  max-width: 400px;
+}
 .v-sheet {
   background-color: transparent;
   box-shadow: none;
