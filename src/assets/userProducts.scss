@@ -1,85 +1,82 @@
-.productCard{
-    img{
-        height: 100%;
-        object-fit: cover;
+.productCard {
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .card-body {
+    .card-text {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* 控制顯示行數 */
+      line-height: 1.5; /* 行高 */
     }
-    .card-body{
-        .card-text{
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2; /* 控制顯示行數 */
-            line-height: 1.5; /* 行高 */
-        }
-        .btn{
-            font-weight: bold;
-            &:hover{
-                color: #fff;
-            }
-        }
-        .btn-primary{
-            color: #fff;
-        }
+    .btn {
+      font-weight: bold;
+      &:hover {
+        color: #fff;
+      }
     }
-   
-
+    .btn-primary {
+      color: #fff;
+    }
+  }
 }
-.sideBar{
-    .list-group-item {
-        img{
-            width: 25px;
-            display: none;
-            margin-left: 10px;
-        }
-        input[type="radio"] {
-            display: none;
-            &:checked + label + img {
-                display: inline-block;
-            }
-            &:checked + label {
-                display: inline-block;
-                font-weight: bold;
-            }
-          }
+.sideBar {
+  .list-group-item {
+    img {
+      width: 25px;
+      display: none;
+      margin-left: 10px;
     }
-    // .list-group-item input[type="radio"] {
-    //     display: none;
-    //   }
-    
-    //   /* 添加自定义样式到选中的列表项 */
-    //   .list-group-item input[type="radio"]:checked + label {
-    //     background-color: #f0f0f0; /* 添加您希望显示的样式 */
-    //   }
-    .card-hotProduct{
-        overflow: hidden;
-        padding: 1rem;
-        position: relative;
-        min-height: 200px;
-        width: 100%;
-        border-radius: 0.5rem;
-        transition: all .3s;
-        background-color: rgba(0, 0, 0, .3);
-        background-blend-mode: multiply;
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        z-index: 1;
-        text-decoration: none;
-            color: #fff;
-        cursor: pointer;
-        &:hover{
-            background-color: rgba(0, 0, 0, .5);
-            transform: scale(1.02);
-        }
+    input[type="radio"] {
+      display: none;
+      &:checked + label + img {
+        display: inline-block;
+      }
+      &:checked + label {
+        display: inline-block;
+        font-weight: bold;
+      }
+    }
+  }
+  // .list-group-item input[type="radio"] {
+  //     display: none;
+  //   }
 
+  //   /* 添加自定义样式到选中的列表项 */
+  //   .list-group-item input[type="radio"]:checked + label {
+  //     background-color: #f0f0f0; /* 添加您希望显示的样式 */
+  //   }
+  .card-hotProduct {
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+      transform: scale(1.02);
     }
-    .card-lg{
-        height: 100%;
-    }
-    li{
-        list-style: none;
-    }
+  }
+  .card-lg {
+    height: 100%;
+  }
+  li {
+    list-style: none;
+  }
 }

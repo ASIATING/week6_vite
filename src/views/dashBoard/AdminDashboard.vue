@@ -1,7 +1,6 @@
 <template>
 <div class="container-fluid">
   <div class="row">
-    <!-- 导航栏 -->
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/admin/products">後台</a>
@@ -35,7 +34,7 @@
     <!-- 主内容区域 -->
     <main class=" container">
       <!-- 在这里放置主要内容 -->
-      <RouterView />
+      <RouterView v-if="checkSuccess" />
     </main>
   </div>
 </div>
@@ -43,6 +42,8 @@
 
 <script>
 import axios from 'axios'
+const { VITE_API } = import.meta.env
+
 export default {
   mounted () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
@@ -51,29 +52,35 @@ export default {
   },
   data () {
     return {
-      apiUrl: import.meta.env.VITE_API
-      // import.meta.env.VITE_PATH
+      checkSuccess: false
     }
   },
   methods: {
     checkLogin () {
-      axios.post(`${this.apiUrl}/api/user/check`)
-        .then(res => {
-          console.log('已登入')
-          this.$router.push('/admin/products')
-          console.log(res)
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-          this.$router.push('/login')
-        })
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+      if (token) {
+        axios.post(`${VITE_API}/api/user/check`)
+          .then(res => {
+            this.checkSuccess = true
+            console.log('已登入')
+            this.$router.push('/admin/products')
+          })
+          .catch(err => {
+            alert(err.response.data.message)
+            this.$router.push('/login')
+          })
+      } else {
+        alert('請先登入')
+        this.$router.push('/login')
+      }
     },
     logout () {
-      axios.post(`${this.apiUrl}/logout`)
+      axios.post(`${VITE_API}/logout`)
         .then(res => {
+          document.cookie = 'hexToken=;expires=;'
           console.log(res)
           console.log('已登出')
-          this.$router.push('/')
+          this.$router.push('/login')
         })
         .catch(err => {
           alert(err)

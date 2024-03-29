@@ -21,7 +21,7 @@
             <p>商品內容：{{ tempProduct.content  }}</p>
             <div class="h5">{{ tempProduct.origin_price }} 元</div>
             <del class="h6">原價 {{ tempProduct.origin_price }} 元</del>
-            <div class="h5">現在只要 {{tempProduct.price  }} 元</div>
+            <div class="h5">現在只要 {{ tempProduct.price }} 元</div>
             <div>
               <div class="input-group">
                 <input type="number" class="form-control"

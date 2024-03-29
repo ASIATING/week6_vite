@@ -31,19 +31,20 @@ export default defineStore('productStore', {
       }
       axios.get(url)
         .then(res => {
-          this.isLoading = false
           this.pagination = res.data.pagination
           console.log(this.pagination)
           this.products = res.data.products
           console.log(this.products)
         })
         .catch(err => {
-          this.isLoading = false
           alert(err.response.data.message)
         })
+        .finally(
+          this.isLoading = false
+        )
     },
     serchBtn (tempCategory) {
-      console.log('serchBtn')
+      console.log('serchBtn', this.selectedOption)
       this.selectedOption = tempCategory
       this.getProducts()
     },

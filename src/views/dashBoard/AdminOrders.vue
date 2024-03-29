@@ -29,11 +29,11 @@
       </thead>
       <tbody>
         <tr v-for="order in ordersData" :key="order.id">
-          <td>{{order.id}}</td>
-          <td>{{order.user.name}}</td>
-          <td>{{order.user.email}}</td>
-          <td>{{formatDate(order.create_at)}}</td>
-          <td>{{order.total}}</td>
+          <td>{{ order.id }}</td>
+          <td>{{ order.user.name }}</td>
+          <td>{{ order.user.email }}</td>
+          <td>{{ formatDate(order.create_at) }}</td>
+          <td>{{ order.total }}</td>
           <td>
             <span class="text-success" v-if="order.is_paid">已付款</span>
             <span v-else>未付款</span>
@@ -72,7 +72,7 @@ export default {
   mounted () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
     axios.defaults.headers.common.Authorization = token
-    this.checkAdmin()
+    // this.checkAdmin()
     this.getData()
   },
   data () {
@@ -133,6 +133,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

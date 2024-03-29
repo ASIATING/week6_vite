@@ -17,7 +17,7 @@
                   placeholder="Password" v-model="user.password" required>
                 <label for="password">Password</label>
               </div>
-              <button class="btn btn-lg btn-primary w-100 mt-3" v-on:click="login" type="button">
+              <button type="button" class="btn btn-lg btn-primary w-100 mt-3" v-on:click="login">
                 登入
               </button>
             </form>

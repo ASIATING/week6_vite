@@ -30,15 +30,6 @@ const vuetify = createVuetify({
   directives
 })
 
-// import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import 'swiper/css'
-// axios
-// import axios from 'axios'
-
-// bootstrap icon
-// import 'material-icons/iconfont/material-icons.css'
-// import 'bootstrap-icons/font/bootstrap-icons.css'
-
 const app = createApp(App)
 
 Object.keys(AllRules).forEach((rule) => {
@@ -57,8 +48,6 @@ setLocale('zh_TW')
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)
-// app.use(VueAwesomeSwiper)
-// app.use(axios)
 app.component('VueLoading', Loading)
 app.component('VForm', Form)
 app.component('VField', Field)

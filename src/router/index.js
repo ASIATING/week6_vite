@@ -1,45 +1,41 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: () => import('../views/HomeView.vue')
-  // },
+
   {
     path: '/',
     name: 'UserSite',
-    component: () => import('../views/UserSite.vue'),
+    component: () => import('../views/frontEnd/UserSite.vue'),
     children: [
       {
         path: '',
         name: 'UserHome',
-        component: () => import('@/views/UserHome.vue')
+        component: () => import('@/views/frontEnd/UserHome.vue')
       },
       {
         path: 'products',
         name: 'UserPoducts',
-        component: () => import('../views/UserProducts.vue')
+        component: () => import('../views/frontEnd/UserProducts.vue')
       },
       {
         path: 'product/:id',
         name: 'UserPoduct',
-        component: () => import('../views/UserProduct.vue')
+        component: () => import('../views/frontEnd/UserProduct.vue')
       },
       {
         path: 'cart',
         name: 'UserCart',
-        component: () => import('../views/UserCart.vue')
+        component: () => import('../views/frontEnd/UserCart.vue')
       },
       {
         path: 'order',
         name: 'UserOrder',
-        component: () => import('../views/UserOrder.vue')
+        component: () => import('../views/frontEnd/UserOrder.vue')
       },
       {
         path: 'orderPay/:id',
         name: 'UserOrderPay',
-        component: () => import('../views/UserOrderPay.vue')
+        component: () => import('../views/frontEnd/UserOrderPay.vue')
       }
     ]
 
@@ -71,6 +67,10 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/UserLogin.vue')
+  },
+  {
+    path: '/:pathMath(.*)*',
+    component: () => import('@/views/NotFound.vue')
   }
 ]
 

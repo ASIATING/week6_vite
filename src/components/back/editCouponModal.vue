@@ -51,7 +51,6 @@
                         <label class="form-check-label" for="is_enabled">是否啟用</label>
               </div>
           </div>
-          {{ coupon }}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

@@ -2,9 +2,9 @@
   <div class="pageColor pt-3">
   <div class="container">
     <div v-if="cartEmpty" class="text-center">
-      <h1 class="text-secondary fw-bold">目前購屋車沒有東西哦來去購物</h1>
-      <button class="btn btn-primary" @click="this.$router.push('/products')">點我逛逛</button>
-      <img src="https://cdn.discordapp.com/attachments/1216979871138320384/1217762666949378191/british-cat-with-shopping-cart-isolated-white-kitten-osolated_767502-1923.png?ex=660534dc&is=65f2bfdc&hm=729fdad49f07f58dbee1c1fd573e4803c73e520b71269c2712755819cf52e07f&" class="m-auto d-block" alt="">
+      <h1 class=" fw-bold">目前購物車沒有東西哦</h1>
+      <button type="button" class="btn btn-primary" @click="this.$router.push('/products')">點我逛逛</button>
+      <img src="https://github.com/ASIATING/image-repository/blob/main/head%20(7).png?raw=true" class="m-auto d-block w-50" alt="購物車為空">
     </div>
     <div v-else>
   <h3 class="fw-bold">購物車</h3>
@@ -18,7 +18,7 @@
     </v-stepper-header>
   </v-stepper>
     <div class="text-end">
-            <button class="btn btn-outline-danger" type="button" @click="clearCart()">清空購物車</button>
+            <button class="btn clearCart" type="button" @click="clearCart()">清空購物車</button>
           </div>
   <table class="table align-middle mt-3">
     <thead>
@@ -35,7 +35,7 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="d-none d-md-block">
-                <img :src="item.product.imageUrl" alt="" width="180px">
+                <img :src="item.product.imageUrl" :alt="`${item.product.title}圖片`" :title="item.product.title" width="180px">
               </div>
               <div>
                 {{ item.product.title }}
@@ -45,13 +45,13 @@
           </td>
           <td>
             <div class="input-group input-group-sm">
-              <input min="1" type="number" class="form-control" v-model.number="item.qty" @blur="updateCart(item)">
+              <input min="1" type="number" class="form-control" v-model.number="item.qty" @input="handleInput($event, item)" @blur="updateCart(item)">
               <span class="input-group-text" id="basic-addon2">{{ item.product.unit }}</span>
             </div>
           </td>
           <td class="text-end">
             <small class="text-success" v-if="cart.final_total !== cart.total">折扣價：</small>
-            {{ item.final_total }}
+            {{ item.final_total.toLocaleString() }}
           </td>
           <td class="text-center">
             <button type="button" class="btn btn-outline-danger btn-sm" @click="removeCartItem(item.id)">
@@ -66,11 +66,11 @@
     <tfoot>
       <tr>
         <td colspan="3" class="text-end">總計</td>
-        <td class="text-center">{{ cart.total }}</td>
+        <td class="text-center">{{ cart && cart.total ? cart.total.toLocaleString() : ''  }}</td>
       </tr>
       <tr v-if="cart.final_total !== cart.total">
         <td colspan="3" class="text-end text-success">折扣價</td>
-        <td class="text-end text-success">{{ cart.final_total }}</td>
+        <td class="text-end text-success">{{cart && cart.final_total ?cart.final_total.toLocaleString() : '' }}</td>
       </tr>
     </tfoot>
   </table>
@@ -78,7 +78,7 @@
   <input type="text" class="form-control" placeholder="輸入優惠碼" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="coupon">
   <div class="input-group-append">
     <button type="button" class="btn btn-primary" @click="sendCoupon(coupon)">
-            送出優惠券
+            套用優惠券
           </button>
   </div>
 </div>
@@ -90,7 +90,7 @@
         </form> -->
 <div class="text-end">
   <RouterLink to="/order" class="nav-link d-inline-block">
-    <button class="btn btn-primary"  @click="sendCoupon(coupon)">結帳去</button>
+    <button type="button" class="btn btn-primary">結帳去</button>
   </RouterLink>
 </div>
 <div class="">
@@ -139,7 +139,7 @@ export default {
           if (res.data.data.final_total === this.rawTotal) {
             Swal.fire({
               title: '優惠券有誤，請重新輸入',
-              confirmButtonColor: '#566B5A',
+              confirmButtonColor: '#ffb300',
               icon: 'warning'
             })
           }
@@ -149,11 +149,16 @@ export default {
         .catch((err) => {
           Swal.fire({
             title: '優惠券有誤，請重新輸入',
-            confirmButtonColor: '#566B5A',
+            confirmButtonColor: '#ffb300',
             icon: 'warning'
           })
           console.log(err)
         })
+    },
+    handleInput (event, item) {
+      if (event.target.value < 1 || event.target.value === '') {
+        event.target.value = 1 // 将输入值设为1
+      }
     }
   },
   computed: {
@@ -168,6 +173,10 @@ export default {
 </script>
 
 <style scoped>
+.clearCart {
+  background-color: #4e4e4e;
+  color:white;
+}
 .couponInput{
   /* width: 150px; */
   max-width: 400px;
@@ -177,7 +186,7 @@ export default {
   box-shadow: none;
 }
 .btn-primary{
-  color: white;
+  color: #4e4e4e !important;
 }
 .pageColor{
   min-height: 85vh;

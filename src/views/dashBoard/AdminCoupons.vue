@@ -9,7 +9,7 @@
     <div>
     </div>
     <div class="ml-auto">
-      <button class="btn btn-primary" @click="openModal('new')">
+      <button type="button" class="btn btn-primary" @click="openModal('new')">
         建立新的產品
       </button>
     </div>
@@ -98,7 +98,7 @@ export default {
   mounted () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
     axios.defaults.headers.common.Authorization = token
-    this.checkAdmin()
+    // this.checkAdmin()
     this.getData()
   },
   methods: {
@@ -147,6 +147,3 @@ export default {
 
 }
 </script>
-
-  <style scoped>
-  </style>

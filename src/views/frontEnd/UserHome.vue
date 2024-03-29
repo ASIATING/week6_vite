@@ -5,25 +5,28 @@
 <div v-else class="homebg">
   <section class="index-hero">
       <img
-        src="https://cdn.discordapp.com/attachments/1216979871138320384/1216999349775503401/still-life-domestic-animal-food-composition_23-2148982410.png?ex=66026df7&is=65eff8f7&hm=effb4583cba8a24e810f0f22ce088db7b947d309e244abf2ec65be33ac58e6e1&"
+        src="https://github.com/ASIATING/image-repository/blob/main/head%20(23).png?raw=true"
         class="index-hero-img"
       />
         <div class="index-hero-txt">
           <h2 class="fw-bold">loves dog&amp;cat</h2>
           <h3 class="fw-bold">
-            換迎來到愛狗貓
+            歡迎來到浪浪小舖
             <span class="fw-bold">寵物有您真好</span>
           </h3>
           <div class="index-hero-btn-wrap">
-            <RouterLink to="/products" exact>產品頁面</RouterLink> |
-            <RouterLink to="/products" exact>幫助浪浪</RouterLink>
+            <RouterLink to="/products" >
+            <button type="button" class="btn btn-primary fw-bold">
+              幫助浪浪
+            </button>
+            </RouterLink>
           </div>
         </div>
     </section>
     <div class="container aboutArea">
       <div class="row align-items-center" data-aos="fade-right">
         <div class="col-md-6 p-3">
-          <img src="https://images.unsplash.com/photo-1519150268069-c094cfc0b3c8?q=80&w=2102&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="aboutImg" alt="...">
+          <img src="https://images.unsplash.com/photo-1519150268069-c094cfc0b3c8?q=80&w=2102&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="aboutImg" alt="溫馨毛孩">
         </div>
         <div class="col-md-6 p-3 aboutTxt" >
           <h1 class="fw-bold">「溫馨家園，流浪貓狗的專屬天地」</h1>
@@ -32,10 +35,10 @@
       </div>
       <div class="row align-items-center flex-row-reverse" data-aos="fade-left">
         <div class="col-md-6 p-3">
-          <img src="https://cdn.discordapp.com/attachments/1216979871138320384/1216979935965478982/cat-drinking-from-bowl_23-2149078311.png?ex=66025be3&is=65efe6e3&hm=8d9c47436c12dcde0603aef67b03c5ccc1064e1feca06075ad6bc00b8b7fdc51&" class="aboutImg" alt="...">
+          <img src="https://github.com/ASIATING/image-repository/blob/main/dog/dogh.png?raw=true" class="aboutImg" alt="溫馨毛孩">
         </div>
         <div class="col-md-6 p-3">
-          <h1 class="fw-bold">購買寵物週邊&捐贈飼料</h1>
+          <h1 class="fw-bold">購買週邊&捐贈飼料</h1>
           <p>「我們的平台，在這裡，您將找到各種貓狗週邊用品，從時尚的衣物到舒適的床鋪，滿足您對愛寵的一切需求。我們精心挑選的商品，不僅品質可靠，更能為您和您的寵物帶來無限的歡樂和幸福，讓您與愛寵共享無盡的快樂時光。」</p>
           <p>「您的每一次購買，都將是流浪貓狗的一絲希望和溫暖。通過我們的平台，您不僅可以為自己的寵物購買高品質的商品，還可以選擇購買捐贈飼料給中途浪浪之家。讓我們攜手為這些無家可歸的小生命帶去溫暖和愛心，讓他們也能擁有一個溫暖的家。感謝您的支持和善心，您的愛心將助力我們一起為流浪貓狗們打造一個更美好的未來！」</p>
         </div>
@@ -126,13 +129,14 @@
           <div class="col-md-3 col-12">
             <div class=" d-flex justify-content-center">
                 <div class="personImg">
-                <img src="https://cdn.discordapp.com/attachments/1216979871138320384/1219955453866414100/240_F_289993382_QJID0KDhWhwp8JX3llcoD8V9jDKAZnpq.png?ex=660d2f0d&is=65faba0d&hm=333bf322e8da082935d8ffa04ebe149d29d99f270dc6443c093f8068840080ef&" alt="">
+                <img src="https://github.com/ASIATING/image-repository/blob/main/head%20(1).png?raw=true" alt="客戶照片">
               </div>
               </div>
               </div>
               <div class="col-md-9 col-12">
                 <h5 class="fw-bold">clair</h5>
-                <p>"我很感激這個網站提供的服務！我家的貓咪是從流浪生活中救出來的，所以我很支持他們的理念。我在這裡買了好多寵物用品，每次都很滿意，而且物品的品質都很好。再也不用擔心找不到合適的商品了！"</p>
+                <p>"我很感激這個網站提供的服務！我家的貓咪是從流浪生活中救出來的，所以我很支持他們的理念。</p>
+                <p>我在這裡買了好多寵物用品，每次都很滿意，而且物品的品質都很好。再也不用擔心找不到合適的商品了！"</p>
               </div>
         </div>
       </div>
@@ -153,8 +157,6 @@
         spaceBetween: 10,
       },
     }"
-    :spaceBetween="10"
-    :centeredSlides="true"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
@@ -220,24 +222,26 @@ export default {
       const productUrl = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}&category=狗飼料`
       axios.get(donateUrl)
         .then(res => {
-          this.isLoading = false
           console.log(res)
           this.donateProducts = res.data.products
         })
         .catch(err => {
-          this.isLoading = false
           alert(err.response.data.message)
         })
+        .finally(
+          this.isLoading = false
+        )
       axios.get(productUrl)
         .then(res => {
-          this.isLoading = false
           console.log(res)
           this.products = res.data.products
         })
         .catch(err => {
-          this.isLoading = false
           alert(err.response.data.message)
         })
+        .finally(
+          this.isLoading = false
+        )
     }
   },
   computed: {
@@ -268,5 +272,11 @@ export default {
 }
 .homebg{
   background-color: #fff3e0;
+}
+.swiper {
+    --swiper-pagination-color: #ffb300;
+}
+.btn-primary{
+  color: #4e4e4e !important;
 }
 </style>
