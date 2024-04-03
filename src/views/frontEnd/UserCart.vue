@@ -34,7 +34,7 @@
         <tr v-for="(item) in cart.carts" :key="item.id">
           <td>
             <div class="d-flex align-items-center">
-              <div class="d-none d-md-block">
+              <div class="d-none d-md-block me-5">
                 <img :src="item.product.imageUrl" :alt="`${item.product.title}圖片`" :title="item.product.title" width="180px">
               </div>
               <div>

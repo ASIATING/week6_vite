@@ -60,6 +60,6 @@ export default {
   background-color: #ffe0b2;
 }
 .marginTop50{
-  margin-top: 50px;
+  margin-top: 58px;
 }
 </style>

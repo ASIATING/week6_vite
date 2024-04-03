@@ -20,12 +20,12 @@
               </li>
               <li class="list-group-item" @click="serchBtn('贊助狗')">
                 <input type="radio" name="options" id="option2" />
-                <label class="cursor-pointer" for="option2">捐贈浪狗品項</label>
+                <label class="cursor-pointer" for="option2">捐贈浪狗</label>
                 <img src="/catFoot.png" alt="導覽圖" />
               </li>
               <li class="list-group-item" @click="serchBtn('贊助貓')">
                 <input type="radio" name="options" id="option3" />
-                <label class="cursor-pointer" for="option3">捐贈浪貓品項</label>
+                <label class="cursor-pointer" for="option3">捐贈浪貓</label>
                 <img src="/catFoot.png" alt="導覽圖" />
               </li>
               <li class="list-group-item" @click="serchBtn('狗飼料')">
@@ -73,7 +73,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 mt-3 mt-md-0">
           <h3 class="fw-bold">
             {{ selectedOption ? selectedOption : "全部商品" }}
           </h3>

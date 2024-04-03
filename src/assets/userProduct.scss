@@ -1,13 +1,5 @@
-.outer{
-    background-image: url('https://cdn.discordapp.com/attachments/1216979871138320384/1216981438503718943/cute-cats-eating-together-outdoors_23-2148683022.png?ex=660b97c9&is=65f922c9&hm=6ca848849e13b50c26e46288b9f3df71d9dc01c6571ab0aee15784d282b4d425&');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.5;
-    height: 30vh; /* 设置高度为网页高度的20% */
-    width: 100%; /* 设置宽度为100% */
-   
-
+.contentMargin{
+    margin-top: 100px;
 }
 .productProfile{
        
@@ -25,6 +17,14 @@
     }
     .btn-primary{
         color: #4e4e4e;
+    }
+    .cardBtn{
+        border: #4e4e4e solid 1px;
+        color: #4e4e4e;
+        &:hover{
+            color: #4e4e4e;
+            font-weight: 700;
+        }
     }
 }
 .rules-list{

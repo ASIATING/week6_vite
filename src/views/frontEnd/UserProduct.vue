@@ -1,8 +1,6 @@
 <template>
-  <div class="outer">
-  </div>
-    <div class="container mt-5">
-      <ul class="breadcrumb d-flex">
+    <div class="container pt-2">
+      <ul class="breadcrumb d-flex mt-3">
         <li>  <router-link to="/"  class="nav-link ">首頁   /</router-link> </li>
         <li>  <router-link to="/products"  class="nav-link ">產品首面   /</router-link> </li>
         <li>   <router-link :to="`/products?category=${productInfo.category}`" class="nav-link">   {{ productInfo.category }}</router-link></li>
@@ -17,9 +15,9 @@
           <p>{{ productInfo.description }}</p>
           <p>{{ productInfo.content }}</p>
           <select class="form-select" aria-label="Default select example" v-model="selectedNum">
-            <option disabled value="">選擇數量至購物車</option>
+            <option disabled value="">請選擇數量</option>
             <option v-for="(index) in 20" :key="index" :value="index">
-              選購{{ index }}個至購物車
+              {{ index }}
             </option>
           </select>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
@@ -27,15 +25,15 @@
             <div class="fw-bold text-danger h5">優惠價格:{{ productInfo.price }}元</div>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+            <button type="button" class="btn  cardBtn" :class="{ disabled: !selectedNum }" @click="addToCart(productInfo.id, selectedNum)">點我加入購物車</button>
             <button type="button" class="btn btn-primary" @click="addToCart(productInfo.id)">立即購買</button>
-            <button type="button" class="btn btn-outline-primary" :class="{ disabled: !selectedNum }" @click="addToCart(productInfo.id, selectedNum)">點我加入購物車</button>
           </div>
         </div>
       </div>
       <br>
       <div class="rules">
         <h3 class="fw-bold">購買須知</h3>
-        <ul class="rules-list">
+        <ul class="rules-list ps-0">
           <li><i class="bi bi-balloon-fill text-Warning"></i> 商品品質：所有寵物商品均符合品質標準，確保安全可靠。</li>
           <li><i class="bi bi-balloon-fill text-Warning"></i> 產品說明：每個商品都有清晰的產品說明，包括用途、材質、尺寸等訊息，以幫助客戶做出明智的選擇。</li>
           <li><i class="bi bi-balloon-fill text-Warning"></i> 價格透明：商品價格明確顯示，不存在隱性費用。</li>
@@ -63,9 +61,6 @@
         spaceBetween: 10,
       },
     }"
-    :loop="true"
-    :loopedSlides="products.length"
-    :centeredSlides="true"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
@@ -129,7 +124,6 @@ export default {
   watch: {
     $route: {
       handler () {
-        alert('changed')
         this.getProductInfo(this.$route.params.id)
       },
       deep: true
@@ -152,5 +146,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh; /* 調整高度以填滿整個視窗 */
+}
+.swiper {
+    --swiper-pagination-color: #ffb300;
 }
 </style>
