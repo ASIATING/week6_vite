@@ -21,6 +21,16 @@
       color: #fff;
     }
   }
+  .imgRounded {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    @media (max-width: 768px) {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
 }
 .sideBar {
   .list-group-item {

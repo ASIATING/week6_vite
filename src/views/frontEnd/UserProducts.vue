@@ -98,7 +98,7 @@
                 >
                   <img
                     :src="product.imageUrl"
-                    class="img-fluid rounded-start rounded-md-top"
+                    class="img-fluid imgRounded"
                     alt="商品照片"
                   />
                 </div>
