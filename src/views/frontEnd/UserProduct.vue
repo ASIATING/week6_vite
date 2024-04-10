@@ -141,6 +141,9 @@ export default {
 </script>
 
 <style scoped>
+.similarArea{
+  margin-bottom: 40px;
+}
 .loading-container {
   display: flex;
   justify-content: center;

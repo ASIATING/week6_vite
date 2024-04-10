@@ -10,7 +10,7 @@
     </div>
     <div class="ml-auto">
       <button type="button" class="btn btn-primary" @click="openModal('new')">
-        建立新的產品
+        建立新優惠券
       </button>
     </div>
   </div>

@@ -10,7 +10,7 @@
       <v-stepper-item title="確認付款" value="3"></v-stepper-item>
     </v-stepper-header>
   </v-stepper>
-      <div class="col-md-6">
+      <div class="col-md-6 mb-5">
         <h5 class="fw-bold">購物車內容</h5>
         <div class="tableClass">
           <table class="table align-middle">
@@ -103,7 +103,7 @@
             <textarea id="message" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-danger" :disabled="cart.total === 0 || loadingItem === 'createOrder'"
+            <button type="submit" class="btn btn-primary submitBtn" :disabled="cart.total === 0 || loadingItem === 'createOrder'"
                     >
             <i class="fas fa-spinner fa-pulse" v-if="loadingItem === 'createOrder'"></i>
               送出訂單
@@ -241,6 +241,9 @@ export default {
 </script>
 
 <style scoped>
+.submitBtn{
+  color:#4e4e4e !important;
+}
 .v-sheet {
   background-color: transparent;
   box-shadow: none;

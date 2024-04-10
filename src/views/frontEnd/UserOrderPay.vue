@@ -88,11 +88,11 @@
                 </div>
                 <div class="d-flex justify-content-center">
                   <button type="button" v-if="orderInfo?.is_paid"
-                 class="btn btn-outline-success btn-lg rounded"
+                 class="btn  returnBtn rounded"
                  @click.prevent="this.$router.push('/');">返回首頁</button>
                   <button type="button" v-else
-                 class="btn btn-outline-primary  btn-lg rounded "
-                 @click.prevent="payOrder">完成訂單</button>
+                 class="btn btn-primary cardBtn"
+                 @click.prevent="payOrder">確認付款</button>
 
                 </div>
               </th>
@@ -178,6 +178,17 @@ export default {
 </script>
 
 <style scoped>
+.returnBtn{
+  border: #4e4e4e 1px solid !important;
+  color: #4e4e4e !important;
+}
+.cardBtn{
+  color: #4e4e4e !important;
+}
+  .cardBtn:hover{
+    color: #4e4e4e;
+    font-weight: 700;
+  }
 .v-sheet {
   background-color: transparent;
   box-shadow: none;
