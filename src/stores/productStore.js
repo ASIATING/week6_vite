@@ -23,7 +23,6 @@ export default defineStore('productStore', {
       this.count += 1
     },
     getProducts (page) {
-      console.log('piniagetProductsNEW')
       this.isLoading = true
       let url = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}`
       if (this.selectedOption !== '') {
@@ -32,19 +31,18 @@ export default defineStore('productStore', {
       axios.get(url)
         .then(res => {
           this.pagination = res.data.pagination
-          console.log(this.pagination)
           this.products = res.data.products
-          console.log(this.products)
+          this.isLoading = false
         })
         .catch(err => {
           alert(err.response.data.message)
-        })
-        .finally(
           this.isLoading = false
-        )
+        })
+        // .finally(
+        //   this.isLoading = false
+        // )
     },
     serchBtn (tempCategory) {
-      console.log('serchBtn', this.selectedOption)
       this.selectedOption = tempCategory
       this.getProducts()
     },
@@ -53,7 +51,6 @@ export default defineStore('productStore', {
       axios.get(url)
         .then(res => {
           this.productInfo = res.data.product
-          console.log(this.productInfo)
         })
         .catch(err => {
           alert(err.response.data.message)

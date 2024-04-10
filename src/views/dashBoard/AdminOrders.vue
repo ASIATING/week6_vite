@@ -100,7 +100,6 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/admin/orders?page=${page}`
       axios.get(url)
         .then((res) => {
-          console.log(res.data)
           const { orders, pagination } = res.data
           this.ordersData = orders
           this.pagination = pagination
@@ -115,7 +114,6 @@ export default {
         this.$refs.editOrderModal.openModal(tempOrder)
       }
       if (type === 'delete') {
-        console.log(tempOrder)
         this.$refs.delOrderModal.openModal(tempOrder)
       }
     },

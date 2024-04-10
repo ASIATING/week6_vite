@@ -149,7 +149,6 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/cart`
       axios.get(url)
         .then(res => {
-          console.log(res)
           this.cart = res.data.data
           if (this.cart.total === 0) {
             this.$router.push({ path: '/cart' })
@@ -165,7 +164,6 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/order`
       axios.post(url, { data: order })
         .then(res => {
-          console.log(res)
           this.$refs.form.resetForm()
           this.loadingItem = ''
           this.$router.push({ path: `./orderPay/${res.data.orderId}` })

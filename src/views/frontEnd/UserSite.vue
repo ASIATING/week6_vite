@@ -27,13 +27,18 @@
               <RouterLink to="/products" class="nav-link">產品列表</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/cart" class="nav-link">購物車</RouterLink>
+              <RouterLink to="/cart" class="nav-link  position-relative">
+                購物車
+                <span class="badge bgInit">
+                  {{ cart.carts?cart.carts.length:0 }}
+                </span>
+                </RouterLink>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <RouterLink to="/admin/products" class="nav-link"
                 >後台商品列表</RouterLink
               >
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -44,18 +49,29 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
 import FooterArea from '@/components/front/footerArea.vue'
+import cartStore from '@/stores/cartStore'
 export default {
   components: {
     FooterArea
   },
   data () {
     return {}
+  },
+  mounted () {
+  },
+  computed: {
+    ...mapState(cartStore, ['cart'])
   }
 }
 </script>
 
 <style scoped>
+.bgInit{
+  color: black;
+  background-color: #ffb300;
+}
 .navbarColor {
   background-color: #ffe0b2;
 }

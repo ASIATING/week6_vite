@@ -186,9 +186,7 @@ export default {
     openModal (item) {
       this.editMode = false
       this.tempOrderData = { ...item }
-      console.log(item)
       this.orderModal.show()
-      console.log(333)
     },
     formatDate (timestamp) {
       // Convert timestamp to milliseconds
@@ -210,7 +208,6 @@ export default {
             data: this.tempOrderData
           })
           .then((res) => {
-            console.log(res.data)
             this.$emit('update')
             this.orderModal.hide()
           })

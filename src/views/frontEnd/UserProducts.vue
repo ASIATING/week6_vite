@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="sideBar">
-            <h3 class="fw-bold">搜尋您要的商品</h3>
+            <h3 class="fw-bold">搜尋您要的商品{{ isLoading }}</h3>
             <input
               type="text"
               class="form-control mb-3"

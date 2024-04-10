@@ -112,10 +112,8 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$route)
     this.getProducts()
     this.getProductInfo(this.$route.params.id)
-    console.log(this.$route.params.id) // this.$route.params.id
   },
   methods: {
     ...mapActions(productStore, ['getProducts', 'getProductInfo']),

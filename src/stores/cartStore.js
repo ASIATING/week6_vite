@@ -17,13 +17,11 @@ export default defineStore('cartStore', {
       this.count += 1
     },
     addToCart (id, qty = 1) {
-      console.log('pinia')
       const url = `${VITE_API}/api/${VITE_PATH}/cart`
       axios.post(url, { data: { product_id: id, qty } })
         .then(res => {
-          console.log(res)
+          this.getCart()
           this.cartsNum = res.data.data.length
-          console.log('this.cartsNum', this.cartsNum)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -48,8 +46,6 @@ export default defineStore('cartStore', {
       const url = `${VITE_API}/api/${VITE_PATH}/cart`
       axios.get(url)
         .then(res => {
-          console.log('pinnacCarttt')
-          console.log(res.data)
           this.cart = res.data.data
           if (this.cart.total === 0) {
             this.cartEmpty = true
@@ -62,7 +58,6 @@ export default defineStore('cartStore', {
         })
     },
     updateCart (data) {
-      console.log('pinnnnna')
       this.loadingItem = data.id
       const url = `${VITE_API}/api/${VITE_PATH}/cart/${data.id}`
       axios.put(url, { data: { product_id: data.product_id, qty: data.qty } })
@@ -92,7 +87,6 @@ export default defineStore('cartStore', {
         })
     },
     removeCartItem (id) {
-      console.log('pinnnnna')
       const url = `${VITE_API}/api/${VITE_PATH}/cart/${id}`
       this.loadingItem = id
       axios.delete(url)
@@ -120,7 +114,6 @@ export default defineStore('cartStore', {
         })
     },
     clearCart () {
-      console.log('pinnnnna')
       Swal.fire({
         title: '確定要清空購物車嗎?',
         text: ' 清空後無法復原! ',

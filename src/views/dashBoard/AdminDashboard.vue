@@ -62,7 +62,6 @@ export default {
         axios.post(`${VITE_API}/api/user/check`)
           .then(res => {
             this.checkSuccess = true
-            console.log('已登入')
             this.$router.push('/admin/products')
           })
           .catch(err => {
@@ -78,8 +77,7 @@ export default {
       axios.post(`${VITE_API}/logout`)
         .then(res => {
           document.cookie = 'hexToken=;expires=;'
-          console.log(res)
-          console.log('已登出')
+          alert('已登出')
           this.$router.push('/login')
         })
         .catch(err => {

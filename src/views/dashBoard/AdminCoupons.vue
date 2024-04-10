@@ -117,7 +117,6 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/admin/coupons`
       axios.get(url)
         .then((response) => {
-          console.log(222, response.data)
           const { coupons, pagination } = response.data
           this.coupons = coupons
           this.pagination = pagination

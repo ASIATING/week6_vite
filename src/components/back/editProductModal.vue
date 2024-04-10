@@ -133,28 +133,15 @@ export default {
       keyboard: false,
       backdrop: 'static'
     })
-    console.log(this.productModal)
-    // this.delProductModal = new bootstrap.Modal(document.getElementById('delProductModal'), {
-    //   keyboard: false
-    // })
-    // 取出token
-    // const token = document.cookie.replace(
-    //   /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
-    //   '$1'
-    // )
-    // axios.defaults.headers.common.Authorization = token
-    // console.log(token)
-    // this.checkLogin()
   },
   methods: {
     checkLogin () {
       axios.post(`${VITE_API}/api/user/check`)
         .then(res => {
-          console.log(res.data)
           this.getProduct()
         })
         .catch(err => {
-          console.dir(err)
+          alert.dir(err)
         })
     },
     getProduct () {
@@ -162,17 +149,15 @@ export default {
       const url = `${VITE_API}/api/${VITE_PATH}/admin/products/all`
       axios.get(url)
         .then(res => {
-          console.log(res.data)
           this.products = res.data.products
           this.isLoding = false
         })
         .catch(err => {
-          console.dir(err)
+          alert.dir(err)
         })
     },
 
     openModal (isNew, item) {
-      console.log(333)
       if (isNew === 'new') {
         this.isNew = true
         this.tempProduct = {
@@ -181,12 +166,9 @@ export default {
         }
         this.productModal.show()
       } else if (isNew === 'edit') {
-        console.log(444)
         this.isNew = false
-        console.log(this.isNew)
         this.tempProduct = { ...item }
         this.productModal.show()
-        console.log(this.tempProduct)
       } else if (isNew === 'delete') {
         this.isNew = false
         this.tempProduct = { ...item }
@@ -195,10 +177,8 @@ export default {
     },
     submitBtn () {
       if (this.isNew) {
-        console.log('this.isNew', this.isNew)
         axios.post(`${VITE_API}/api/${VITE_PATH}/admin/product/`, { data: this.tempProduct })
           .then(res => {
-            console.log(res.data)
             this.$emit('update')
             this.productModal.hide()
             this.getProduct()
@@ -209,7 +189,6 @@ export default {
       } else {
         axios.put(`${VITE_API}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`, { data: this.tempProduct })
           .then(res => {
-            console.log(res.data)
             this.$emit('update')
             this.productModal.hide()
             this.getProduct()
@@ -222,13 +201,12 @@ export default {
     deletBtn () {
       axios.delete(`${VITE_API}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`, { data: this.tempProduct })
         .then(res => {
-          console.log(res.data)
           this.delProductModal.hide()
           alert('刪除成功')
           this.getProduct()
         })
         .catch(err => {
-          console.dir(err)
+          alert.dir(err)
         })
     },
     addImage () {
@@ -236,7 +214,6 @@ export default {
         this.tempProduct.imagesUrl = []
         this.tempProduct.imagesUrl.push('')
       } else {
-        console.log(this.tempProduct.imagesUrl)
         this.tempProduct.imagesUrl.push('')
       }
     },

@@ -222,7 +222,6 @@ export default {
       const productUrl = `${VITE_API}/api/${VITE_PATH}/products?page=${page || 1}&category=狗飼料`
       axios.get(donateUrl)
         .then(res => {
-          console.log(res)
           this.donateProducts = res.data.products
         })
         .catch(err => {
@@ -233,7 +232,6 @@ export default {
         )
       axios.get(productUrl)
         .then(res => {
-          console.log(res)
           this.products = res.data.products
         })
         .catch(err => {

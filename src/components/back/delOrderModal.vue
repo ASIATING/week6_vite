@@ -46,7 +46,6 @@ export default {
   methods: {
     delOrder () {
       axios.delete(`${this.apiUrl}/api/${this.apiPath}/admin/Order/${this.item.id}`).then((response) => {
-        console.log(response)
         this.hideModal()
         this.$emit('update')
       }).catch((err) => {
@@ -54,7 +53,6 @@ export default {
       })
     },
     openModal () {
-      console.log(this.item)
       this.delOrderModal.show()
     },
     hideModal () {

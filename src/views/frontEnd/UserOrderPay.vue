@@ -137,13 +137,11 @@ export default {
     getOrder (id) {
       axios.get(`${VITE_API}/api/${VITE_PATH}/order/${id}`)
         .then((res) => {
-          console.log(res.data)
           this.orderInfo = res.data.order
         })
         .catch((err) => {
           alert(err.response.data.message)
         })
-      console.log('123')
     },
     payOrder () {
       const url = `${VITE_API}/api/${VITE_PATH}/pay/${this.$route.params.id}`
@@ -155,7 +153,6 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-          console.log(res.data)
           this.getOrder(this.$route.params.id)
         })
         .catch((err) => {
