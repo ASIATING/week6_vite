@@ -1,10 +1,10 @@
 <template>
-        <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1" aria-labelledby="delProductModalLabel"
+        <div id="DelProductModal" ref="DelProductModal" class="modal fade" tabindex="-1" aria-labelledby="DelProductModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content border-0">
           <div class="modal-header bg-danger text-white">
-            <h5 id="delProductModalLabel" class="modal-title">
+            <h5 id="DelProductModalLabel" class="modal-title">
               <span>刪除{{ apiMethod }}</span>
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -27,18 +27,17 @@
 </template>
 <script>
 import axios from 'axios'
-import * as bootstrap from 'bootstrap'
 export default {
   props: ['item', 'apiMethod'],
   data () {
     return {
       apiUrl: 'https://vue3-course-api.hexschool.io/v2',
       apiPath: 'ting-hexschool',
-      delProductModal: null
+      DelProductModal: null
     }
   },
   mounted () {
-    this.delProductModal = new bootstrap.Modal(this.$refs.delProductModal, {
+    this.DelProductModal = new window.bootstrap.Modal(this.$refs.DelProductModal, {
       keyboard: false,
       backdrop: 'static'
     })
@@ -53,10 +52,10 @@ export default {
       })
     },
     openModal () {
-      this.delProductModal.show()
+      this.DelProductModal.show()
     },
     hideModal () {
-      this.delProductModal.hide()
+      this.DelProductModal.hide()
     }
   }
 }

@@ -10,11 +10,11 @@
       />
         <div class="index-hero-txt">
           <h2 class="fw-bold">loves dog&amp;cat</h2>
-          <h3 class="fw-bold">
+          <h2 class="fw-bold">
             歡迎來到浪浪小舖
             <span class="fw-bold">寵物有您真好</span>
-          </h3>
-          <div class="index-hero-btn-wrap">
+          </h2>
+          <div class="index-hero-btn-wrap mt-4">
             <RouterLink to="/products" >
             <button type="button" class="btn btn-primary fw-bold">
               幫助浪浪

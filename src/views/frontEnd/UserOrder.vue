@@ -1,7 +1,7 @@
 <template>
   <div class="container mb-5">
     <div class="row mt-3">
-      <v-stepper class="stepper-transparent" model-value="2">
+      <v-stepper class="stepper-transparent" model-value="2" alt-labels>
     <v-stepper-header>
       <v-stepper-item title="購物車確認" value="1"></v-stepper-item>
       <v-divider></v-divider>
@@ -19,7 +19,6 @@
               <th>品名</th>
               <th style="width: 150px">數量/單位</th>
               <th>單價</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +34,7 @@
                 </td>
                 <td>
                   <div class="input-group input-group-sm">
-                    <input min="1" type="number" class="form-control" @input="handleInput($event, item)" v-model.number="item.qty" @blur="updateCart(item)">
+                    <input min="1" type="number" class="form-control" @input="handleInput($event, item)" v-model.number="item.qty" @blur="updateCart(item)" disabled>
                     <span class="input-group-text" id="basic-addon2">{{ item.product.unit }}</span>
                   </div>
                 </td>
@@ -43,23 +42,16 @@
                   <small class="text-success" v-if="cart.final_total !== cart.total">折扣價：</small>
                   {{ Math.floor(item.final_total) }}
                 </td>
-                <td class="text-center">
-                  <button type="button" class="btn btn-outline-danger btn-sm" @click="removeCartItem(item.id)">
-                    <!-- <i class="fas fa-spinner fa-pulse" v-if="loadingItem === item.id"></i> -->
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" v-if="loadingItem === item.id"></span>
-                    <div v-else>x</div>
-                  </button>
-                </td>
               </tr>
             </template>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="3" class="text-end">總計</td>
+              <td colspan="2" class="text-end">總計</td>
               <td class="text-center">{{ cart.total }}</td>
             </tr>
             <tr v-if="cart.final_total !== cart.total">
-              <td colspan="3" class="text-end text-success">折扣價</td>
+              <td colspan="2" class="text-end text-success">折扣價</td>
               <td class="text-end text-success">{{ Math.floor(cart.final_total) }}</td>
             </tr>
           </tfoot>

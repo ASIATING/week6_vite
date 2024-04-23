@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="sideBar">
-            <h3 class="fw-bold">搜尋您要的商品{{ isLoading }}</h3>
+            <h3 class="fw-bold">搜尋您要的商品</h3>
             <input
               type="text"
               class="form-control mb-3"
@@ -20,12 +20,12 @@
               </li>
               <li class="list-group-item" @click="serchBtn('贊助狗')">
                 <input type="radio" name="options" id="option2" />
-                <label class="cursor-pointer" for="option2">捐贈浪狗</label>
+                <label class="cursor-pointer" for="option2">贊助狗</label>
                 <img src="/catFoot.png" alt="導覽圖" />
               </li>
               <li class="list-group-item" @click="serchBtn('贊助貓')">
                 <input type="radio" name="options" id="option3" />
-                <label class="cursor-pointer" for="option3">捐贈浪貓</label>
+                <label class="cursor-pointer" for="option3">贊助貓</label>
                 <img src="/catFoot.png" alt="導覽圖" />
               </li>
               <li class="list-group-item" @click="serchBtn('狗飼料')">
@@ -82,7 +82,11 @@
           </div>
           <div v-else-if="filteredProducts.length === 0">
             <h5 class="mt-5 fw-bold text-center">沒有符合條件的商品</h5>
-            <img class=" w-100" src="https://github.com/ASIATING/image-repository/blob/main/noproduct.png?raw=true" alt="沒有符合條件的商品">
+            <img
+              class="w-100"
+              src="https://github.com/ASIATING/image-repository/blob/main/noproduct.png?raw=true"
+              alt="沒有符合條件的商品"
+            />
           </div>
           <div
             v-else
@@ -90,56 +94,56 @@
             :key="product.id"
             class="card productCard mb-3"
           >
-          <router-link :to="`/product/${product.id}`" class="card border-0 text-decoration-none">
-            <div class="row g-0 cursor-pointer">
-              <div class="col-md-4">
-                <div
-                  class="d-flex justify-content-center justify-content-md-start align-items-center h-100"
-                >
-                  <img
-                    :src="product.imageUrl"
-                    class="img-fluid imgRounded"
-                    alt="商品照片"
-                  />
+            <router-link
+              :to="`/product/${product.id}`"
+              class="card border-0 text-decoration-none"
+            >
+              <div class="row g-0 cursor-pointer">
+                <div class="col-md-4">
+                  <div
+                    class="d-flex justify-content-center justify-content-md-start align-items-center h-100"
+                  >
+                    <img
+                      :src="product.imageUrl"
+                      class="img-fluid imgRounded"
+                      alt="商品照片"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title fw-bold">{{ product.title }}</h5>
-                  <p class="card-text d-none d-md-block">
-                    {{ product.description }}
-                  </p>
-                  <div class="d-flex justify-content-between align-items-end">
-                    <div>
+                <div class="col-md-8">
+                  <div class="card-body h-100">
+                    <h5 class="card-title fw-bold">{{ product.title }}</h5>
+                    <p class="card-text d-none d-md-block">
+                      {{ product.description }}
+                    </p>
+                    <div class="d-flex justify-content-between">
                       <div>
-                        <del>建議售價:{{ product.origin_price.toLocaleString() }}</del>
-                      </div>
-                      <div class="fw-bold text-danger fz-3">
-                        優惠價格:{{ product.price.toLocaleString() }}
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex flex-column flex-md-row align-items-md-center mt-md-0 mt-3"
-                    >
-                      <!-- <router-link :to="`/product/${product.id}`">
-                        <div
-                          class="btn  btn-primary cardBtn  mb-2 mb-md-0 mr-md-3"
-                        >
-                          看商品詳情
+                        <div>
+                          <del
+                            >建議售價:{{
+                              product.origin_price.toLocaleString()
+                            }}</del
+                          >
                         </div>
-                      </router-link> -->
+                        <div class="fw-bold text-danger fz-3">
+                          優惠價格:{{ product.price.toLocaleString() }}
+                        </div>
+                      </div>
                       <div
-                        class="btn  btn-primary cardBtn  ms-md-3"
-                        @click.prevent="addToCart(product.id)"
+                        class="d-flex flex-column flex-md-row align-items-md-center mt-md-0 mt-3"
                       >
-                        加入購物車
+                        <div
+                          class="btn btn-primary cardBtn ms-md-3"
+                          @click.prevent="addToCart(product.id)"
+                        >
+                          加入購物車
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </router-link>
+            </router-link>
           </div>
           <div v-if="!serchKeyword" class="d-flex justify-content-end">
             <PaginationArea
@@ -189,7 +193,12 @@ export default {
     ...mapActions(cartStore, ['addToCart'])
   },
   computed: {
-    ...mapState(productStore, ['products', 'pagination', 'isLoading', 'selectedOption']),
+    ...mapState(productStore, [
+      'products',
+      'pagination',
+      'isLoading',
+      'selectedOption'
+    ]),
     filteredProducts () {
       return this.products.filter((product) => {
         return product.title
@@ -202,12 +211,18 @@ export default {
 </script>
 
 <style scoped>
+li:hover{
+  font-weight: bold;
+}
+.card:hover {
+  box-shadow: 0 0 0 0.3rem rgba(255, 179, 0, 0.5);
+}
 .btn-primary {
-  color:#4e4e4e !important
+  color: #4e4e4e !important;
 }
 .addToCartBtn {
   border: #4e4e4e 1px solid !important;
-  color:#4e4e4e !important
+  color: #4e4e4e !important;
 }
 .loading-container {
   display: flex;
@@ -221,6 +236,6 @@ export default {
 }
 
 .swiper {
-    --swiper-pagination-color: #ffb300;
+  --swiper-pagination-color: #ffb300;
 }
 </style>

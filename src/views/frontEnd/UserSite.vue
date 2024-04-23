@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
-import FooterArea from '@/components/front/footerArea.vue'
+import { mapState, mapActions } from 'pinia'
+import FooterArea from '@/components/front/FooterArea.vue'
 import cartStore from '@/stores/cartStore'
 export default {
   components: {
@@ -59,7 +59,11 @@ export default {
   data () {
     return {}
   },
+  methods: {
+    ...mapActions(cartStore, ['getCart'])
+  },
   mounted () {
+    this.getCart()
   },
   computed: {
     ...mapState(cartStore, ['cart'])
@@ -69,6 +73,8 @@ export default {
 
 <style scoped>
 .bgInit{
+  position: absolute;
+  top: 10px;
   color: black;
   background-color: #ffb300;
 }

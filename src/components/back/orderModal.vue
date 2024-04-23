@@ -1,11 +1,11 @@
 <template>
   <div
     class="modal fade"
-    id="orderModal"
+    id="OrderModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
-    ref="orderModal"
+    ref="OrderModal"
   >
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
@@ -164,7 +164,6 @@
 
 <script>
 import axios from 'axios'
-import * as bootstrap from 'bootstrap'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
@@ -172,12 +171,12 @@ export default {
       tempOrderData: {
         user: {}
       },
-      orderModal: null,
+      OrderModal: null,
       editMode: false // 编辑模式
     }
   },
   mounted () {
-    this.orderModal = new bootstrap.Modal(this.$refs.orderModal, {
+    this.OrderModal = new window.bootstrap.Modal(this.$refs.OrderModal, {
       keyboard: false,
       backdrop: 'static'
     })
@@ -186,7 +185,7 @@ export default {
     openModal (item) {
       this.editMode = false
       this.tempOrderData = { ...item }
-      this.orderModal.show()
+      this.OrderModal.show()
     },
     formatDate (timestamp) {
       // Convert timestamp to milliseconds
@@ -209,7 +208,7 @@ export default {
           })
           .then((res) => {
             this.$emit('update')
-            this.orderModal.hide()
+            this.OrderModal.hide()
           })
           .catch((err) => {
             alert(err)

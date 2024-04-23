@@ -51,23 +51,23 @@
         </tr>
       </tbody>
     </table>
-    <order-modal ref="editOrderModal" :temp-order ="tempOrder"  @update="getData"></order-modal>
-    <del-order-modal ref="delOrderModal" :item="tempOrder" @update="getData"></del-order-modal>
-    <pagination :pagination="pagination" @emit-pages="getData"></pagination>
+    <order-modal ref="EditOrderModal" :temp-order ="tempOrder"  @update="getData"></order-modal>
+    <del-order-modal ref="DelOrderModal" :item="tempOrder" @update="getData"></del-order-modal>
+    <Pagination :pagination="pagination" @emit-pages="getData"></Pagination>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import orderModal from '@/components/back/orderModal.vue'
-import delOrderModal from '@/components/back/delOrderModal.vue'
+import OrderModal from '@/components/back/OrderModal.vue'
+import DelOrderModal from '@/components/back/DelOrderModal.vue'
 import Pagination from '@/components/PaginationArea.vue'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   components: {
-    orderModal,
+    OrderModal,
     Pagination,
-    delOrderModal
+    DelOrderModal
   },
   mounted () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
@@ -111,10 +111,10 @@ export default {
     openModal (tempOrder, type) {
       this.tempOrder = { ...tempOrder }
       if (type === 'edit') {
-        this.$refs.editOrderModal.openModal(tempOrder)
+        this.$refs.EditOrderModal.openModal(tempOrder)
       }
       if (type === 'delete') {
-        this.$refs.delOrderModal.openModal(tempOrder)
+        this.$refs.DelOrderModal.openModal(tempOrder)
       }
     },
     formatDate (timestamp) {

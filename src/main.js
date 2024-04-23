@@ -4,6 +4,7 @@ import './assets/all.scss'
 import Loading from 'vue-loading-overlay'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import * as bootstrap from 'bootstrap'
 
 import App from './App.vue'
 import router from './router'
@@ -24,6 +25,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+window.bootstrap = bootstrap
 
 const vuetify = createVuetify({
   components,

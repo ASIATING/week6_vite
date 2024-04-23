@@ -1,6 +1,6 @@
 <template>
   <div class="container vh-100" >
-    <v-stepper class="stepper-transparent" model-value="3">
+    <v-stepper class="stepper-transparent" model-value="3" alt-labels>
     <v-stepper-header>
       <v-stepper-item title="購物車確認" value="1"></v-stepper-item>
       <v-divider></v-divider>

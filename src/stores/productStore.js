@@ -32,15 +32,13 @@ export default defineStore('productStore', {
         .then(res => {
           this.pagination = res.data.pagination
           this.products = res.data.products
-          this.isLoading = false
         })
         .catch(err => {
           alert(err.response.data.message)
+        })
+        .finally(() => {
           this.isLoading = false
         })
-        // .finally(
-        //   this.isLoading = false
-        // )
     },
     serchBtn (tempCategory) {
       this.selectedOption = tempCategory

@@ -85,13 +85,13 @@
     </div>
     <!-- Modal -->
     <edit-product-modal
-      ref="editProductModal"
+      ref="EditProductModal"
       :product="tempProduct"
       :is-new="isNew"
       @update="getData"
     ></edit-product-modal>
     <del-product-modal
-      ref="delProductModal"
+      ref="DelProductModal"
       :item="tempProduct"
       :apiMethod="'product'"
       @update="getData"
@@ -103,14 +103,14 @@
 <script>
 import axios from 'axios'
 import PaginationArea from '@/components/PaginationArea.vue'
-import editProductModal from '@/components/back/editProductModal.vue'
-import delProductModal from '@/components/back/delProductModal.vue'
+import EditProductModal from '@/components/back/EditProductModal.vue'
+import DelProductModal from '@/components/back/DelProductModal.vue'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   components: {
     PaginationArea,
-    editProductModal,
-    delProductModal
+    EditProductModal,
+    DelProductModal
   },
   data () {
     return {
@@ -167,15 +167,15 @@ export default {
           imagesUrl: []
         }
         this.isNew = true
-        this.$refs.editProductModal.openModal(isNew, item)
+        this.$refs.EditProductModal.openModal(isNew, item)
       } else if (isNew === 'edit') {
         this.tempProduct = { ...item }
         this.isNew = false
-        this.$refs.editProductModal.openModal(isNew, item)
+        this.$refs.EditProductModal.openModal(isNew, item)
       } else if (isNew === 'delete') {
         this.tempProduct = { ...item }
-        // delProductModal.show()
-        this.$refs.delProductModal.openModal(isNew, item)
+        // DelProductModal.show()
+        this.$refs.DelProductModal.openModal(isNew, item)
       }
     },
     serchBtn (tempCategory) {

@@ -27,8 +27,13 @@
 
           <div class="mb-3">
             <label for="address" class="form-label">折扣%數</label>
-            <v-field id="address" name="折扣數" type="number" class="form-control" :class="{ 'is-invalid': errors['折扣數'] }"
-                      placeholder="折扣數" rules="required"  v-model="coupon.percent"></v-field>
+            <br>
+            <v-field id="address" name="折扣數" class="form-control t" :class="{ 'is-invalid': errors['折扣數'] }"
+                    placeholder="折扣數" rules="required" v-model="coupon.percent">
+              <select class="btn btn-outline-secondary" v-model="coupon.percent">
+                <option v-for="number in 100" :key="number" :value="number">{{ number }}</option>
+              </select>%
+            </v-field>
             <error-message name="折扣數" class="invalid-feedback"></error-message>
           </div>
 
@@ -67,7 +72,6 @@
 
 <script>
 import axios from 'axios'
-import * as bootstrap from 'bootstrap'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   props: ['tempCoupon'],
@@ -87,7 +91,7 @@ export default {
     }
   },
   mounted () {
-    this.productModal = new bootstrap.Modal(this.$refs.productModal, {
+    this.productModal = new window.bootstrap.Modal(this.$refs.productModal, {
       keyboard: false,
       backdrop: 'static'
     })
@@ -104,7 +108,8 @@ export default {
       if (isNew === 'new') {
         this.isNew = true
         this.coupon = {
-          is_enabled: 0
+          is_enabled: 0,
+          percent: 1
         }
         this.productModal.show()
       } else if (isNew === 'edit') {
@@ -114,7 +119,7 @@ export default {
       } else if (isNew === 'delete') {
         this.isNew = false
         this.tempProduct = { ...item }
-        this.delProductModal.show()
+        this.DelProductModal.show()
       }
     },
     submitBtn () {
@@ -142,7 +147,7 @@ export default {
     deletBtn () {
       axios.delete(`${VITE_API}/api/${VITE_PATH}/admin/coupon/${this.coupon.id}`)
         .then(res => {
-          this.delProductModal.hide()
+          this.DelProductModal.hide()
           alert('刪除成功')
         })
         .catch(err => {
@@ -153,6 +158,3 @@ export default {
   }
 }
 </script>
-<style>
-
-</style>

@@ -27,7 +27,6 @@
 </template>
 <script>
 import axios from 'axios'
-import * as bootstrap from 'bootstrap'
 export default {
   props: ['item'],
   data () {
@@ -38,7 +37,7 @@ export default {
     }
   },
   mounted () {
-    this.delOrderModal = new bootstrap.Modal(this.$refs.delOrderModal, {
+    this.delOrderModal = new window.bootstrap.Modal(this.$refs.delOrderModal, {
       keyboard: false,
       backdrop: 'static'
     })

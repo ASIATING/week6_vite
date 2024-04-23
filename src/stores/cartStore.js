@@ -119,8 +119,8 @@ export default defineStore('cartStore', {
         text: ' 清空後無法復原! ',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: 'gray',
         confirmButtonText: '確定，我要清空購物車!',
         cancelButtonText: '取消'
       }).then((result) => {

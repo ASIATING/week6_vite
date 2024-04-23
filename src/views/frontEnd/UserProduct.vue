@@ -25,8 +25,8 @@
             <div class="fw-bold text-danger h5">優惠價格:{{ productInfo.price }}元</div>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-            <button type="button" class="btn  cardBtn" :class="{ disabled: !selectedNum }" @click="addToCart(productInfo.id, selectedNum)">點我加入購物車</button>
             <button type="button" class="btn btn-primary" @click="addToCart(productInfo.id)">立即購買</button>
+            <button type="button" class="btn  cardBtn" :class="{ disabled: !selectedNum }" @click="addToCart(productInfo.id, selectedNum)">點我加入購物車</button>
           </div>
         </div>
       </div>

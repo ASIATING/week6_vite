@@ -61,12 +61,12 @@
           </tbody>
         </table>
         <!-- 分頁元件 -->
-        <pagination :pagination="pagination" @emit-pages="getData"></pagination>
+        <Pagination :pagination="pagination" @emit-pages="getData"></Pagination>
         <!-- 分頁元件 -->
       </div>
       <!-- Modal -->
-      <edit-coupon-modal ref="editCouponModal" :coupon="tempCoupon" :is-new="isNew" @update="getData"></edit-coupon-modal>
-      <del-product-modal ref="delProductModal" :item="tempCoupon" :apiMethod="'coupon'" @update="getData"></del-product-modal>
+      <edit-coupon-modal ref="EditCouponModal" :coupon="tempCoupon" :is-new="isNew" @update="getData"></edit-coupon-modal>
+      <del-product-modal ref="DelProductModal" :item="tempCoupon" :apiMethod="'coupon'" @update="getData"></del-product-modal>
       <!-- Modal -->
     </div>
 
@@ -74,15 +74,15 @@
 
 <script>
 import axios from 'axios'
-import pagination from '@/components/PaginationArea.vue'
-import editCouponModal from '@/components/back/editCouponModal.vue'
-import delProductModal from '@/components/back/delProductModal.vue'
+import Pagination from '@/components/PaginationArea.vue'
+import EditCouponModal from '@/components/back/EditCouponModal.vue'
+import DelProductModal from '@/components/back/DelProductModal.vue'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   components: {
-    pagination,
-    editCouponModal,
-    delProductModal
+    Pagination,
+    EditCouponModal,
+    DelProductModal
   },
   data () {
     return {
@@ -131,15 +131,15 @@ export default {
 
         }
         this.isNew = true
-        this.$refs.editCouponModal.openModal(isNew, item)
+        this.$refs.EditCouponModal.openModal(isNew, item)
       } else if (isNew === 'edit') {
         this.tempCoupon = { ...item }
         this.isNew = false
-        this.$refs.editCouponModal.openModal(isNew, item)
+        this.$refs.EditCouponModal.openModal(isNew, item)
       } else if (isNew === 'delete') {
         this.tempCoupon = { ...item }
-        // delProductModal.show()
-        this.$refs.delProductModal.openModal(isNew, item)
+        // DelProductModal.show()
+        this.$refs.DelProductModal.openModal(isNew, item)
       }
     }
   }

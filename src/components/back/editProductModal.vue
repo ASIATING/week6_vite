@@ -113,7 +113,6 @@
 
 <script>
 import axios from 'axios'
-import * as bootstrap from 'bootstrap'
 const { VITE_API, VITE_PATH } = import.meta.env
 export default {
   data () {
@@ -129,7 +128,7 @@ export default {
     }
   },
   mounted () {
-    this.productModal = new bootstrap.Modal(this.$refs.productModal, {
+    this.productModal = new window.bootstrap.Modal(this.$refs.productModal, {
       keyboard: false,
       backdrop: 'static'
     })
@@ -172,7 +171,7 @@ export default {
       } else if (isNew === 'delete') {
         this.isNew = false
         this.tempProduct = { ...item }
-        this.delProductModal.show()
+        this.DelProductModal.show()
       }
     },
     submitBtn () {
@@ -201,7 +200,7 @@ export default {
     deletBtn () {
       axios.delete(`${VITE_API}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`, { data: this.tempProduct })
         .then(res => {
-          this.delProductModal.hide()
+          this.DelProductModal.hide()
           alert('刪除成功')
           this.getProduct()
         })
@@ -224,6 +223,3 @@ export default {
   }
 }
 </script>
-<style>
-
-</style>

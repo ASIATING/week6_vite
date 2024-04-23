@@ -11,9 +11,6 @@
 </footer>
     </div>
 </template>
-<script>
-
-</script>
 <style scope>
     .footColor{
         background-color: #ffe0b2;
